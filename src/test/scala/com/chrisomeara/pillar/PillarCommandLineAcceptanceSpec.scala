@@ -8,7 +8,7 @@ import com.datastax.driver.core.querybuilder.QueryBuilder
 import com.chrisomeara.pillar.cli.App
 
 class PillarCommandLineAcceptanceSpec extends FeatureSpec with GivenWhenThen with BeforeAndAfter with ShouldMatchers with AcceptanceAssertions {
-  val cluster = Cluster.builder().addContactPoint("127.0.0.1").build()
+  val cluster = Cluster.builder().withCredentials("cassandra","cassandra").addContactPoint("10.24.10.48").build()
   val session = cluster.connect()
   val keyspaceName = "pillar_acceptance_test"
 

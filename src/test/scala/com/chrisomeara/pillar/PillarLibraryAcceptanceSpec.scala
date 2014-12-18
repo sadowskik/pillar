@@ -8,7 +8,7 @@ import com.datastax.driver.core.querybuilder.QueryBuilder
 import org.scalatest.{BeforeAndAfter, FeatureSpec, GivenWhenThen, Matchers}
 
 class PillarLibraryAcceptanceSpec extends FeatureSpec with GivenWhenThen with BeforeAndAfter with Matchers with AcceptanceAssertions {
-  val cluster = Cluster.builder().addContactPoint("127.0.0.1").build()
+  val cluster = Cluster.builder().withCredentials("cassandra","cassandra").addContactPoint("10.24.10.48").build()
   val keyspaceName = "test_%d".format(System.currentTimeMillis())
   val session = cluster.connect()
   val migrations = Seq(
